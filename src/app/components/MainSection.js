@@ -1,20 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import TodoItem from './TodoItem';
-import Footer from './Footer';
 import {Server} from './Server';
 import {AppsItem} from './Apps';
-import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters';
-
-const TODO_FILTERS = {
-  [SHOW_ALL]: () => true,
-  [SHOW_ACTIVE]: todo => !todo.completed,
-  [SHOW_COMPLETED]: todo => todo.completed
-};
+import {Cluster} from './Cluster';
+import { Button, Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
 class MainSection extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {filter: SHOW_ALL};
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleCompleteAll = this.handleCompleteAll.bind(this);
@@ -47,8 +39,6 @@ class MainSection extends Component {
   }
 
   renderFooter(completedCount) {
-    const {todos} = this.props;
-    const {filter} = this.state;
     const activeCount = todos.length - completedCount;
 
     if (todos.length) {
@@ -56,7 +46,6 @@ class MainSection extends Component {
         <Footer
           completedCount={completedCount}
           activeCount={activeCount}
-          filter={filter}
           onClearCompleted={this.handleClearCompleted}
           onShow={this.handleShow}
           />
@@ -65,55 +54,41 @@ class MainSection extends Component {
   }
 
   render() {
-    const {todos, actions, servers, apps, actionsApps} = this.props;
-    const {filter} = this.state;
-
-    const filteredTodos = todos.filter(TODO_FILTERS[filter]);
-    const completedCount = todos.reduce((count, todo) =>
-      todo.completed ? count + 1 : count,
-      0
-    );
-
+    const {actions, servers, apps, actionsApps} = this.props;
+    console.log(servers);
     return (
-      <div>
       <section className="main">
-        {this.renderToggleAll(completedCount)}
-        <ul className="todo-list">
-          {filteredTodos.map(todo =>
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              {...actions}
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={6} md={4}>
+              <Server
+                servers={servers}
+                actions={actions}
               />
-          )}
-        </ul>
-        {this.renderFooter(completedCount)}
-      </section>
-      <section className="main">
-        <Server
-          servers={servers}
-          actions={actions}
-        />
-      </section>
-      <section className="main">
-        <ul className="todo-list">
-          {this.props.apps.map(app =>
-            <AppsItem
-              key={app.id}
-              app={app}
-              actions={actionsApps}
+              <ul className="todo-list">
+                {this.props.apps.map(app =>
+                  <AppsItem
+                    key={app.id}
+                    app={app}
+                    actions={actionsApps}
+                    servers={servers}
+                   />
+                )}
+              </ul>
+            </Col>
+            <Col xs={12} md={8}>
+            <Cluster
               servers={servers}
-             />
-          )}
-        </ul>
+            />
+            </Col>
+          </Row>
+        </Grid>
       </section>
-      </div>
     );
   }
 }
-
+//add here
 MainSection.propTypes = {
-  todos: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 

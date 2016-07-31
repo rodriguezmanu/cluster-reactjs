@@ -49,7 +49,7 @@ export default function apps(state = initialState, action) {
         }
      }
 
-      return state.map(app =>
+      state.map(app =>
         app.id === action.id ?
           Object.assign({}, app, {count: app.count + 1}) :
           app
