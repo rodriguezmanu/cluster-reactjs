@@ -3,7 +3,7 @@ import {ADD_SERVER, DELETE_SERVER, COMPLETE_SERVER} from '../constants/ActionTyp
 const initialState = [
   {
     id: 0,
-    used: false
+    used: false,
   },
   {
     id: 1,
@@ -30,10 +30,13 @@ export default function servers(state = initialState, action) {
         ...state
       ];
 
+//When a server is destroyed, each app running on it should be restarted elsewhere in the
+// cluster following the algorithm above. If there is no capacity for the apps, they should be
+// killed.
     case DELETE_SERVER:
-      state.shift();//si esta used hay que borrar el siguiente
+      state.shift();
 
-    case COMPLETE_SERVER:
+    case COMPLETE_SERVER://ver si es neces
       return state.map(server =>
         server.id === action.id ?
           Object.assign({}, server, {used: !server.used}) :

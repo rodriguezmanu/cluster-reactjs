@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
 import {Server} from './Server';
+import {AppsItem} from './Apps';
 import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters';
 
 const TODO_FILTERS = {
@@ -64,7 +65,7 @@ class MainSection extends Component {
   }
 
   render() {
-    const {todos, actions, servers} = this.props;
+    const {todos, actions, servers, apps, actionsApps} = this.props;
     const {filter} = this.state;
 
     const filteredTodos = todos.filter(TODO_FILTERS[filter]);
@@ -90,6 +91,17 @@ class MainSection extends Component {
       </section>
       <section className="main">
         <Server servers={servers} actions={actions}/>
+      </section>
+      <section className="main">
+        <ul className="todo-list">
+          {this.props.apps.map(app =>
+            <AppsItem
+              key={app.id}
+              app={app}
+              actions={actionsApps}
+              />
+          )}
+        </ul>
       </section>
       </div>
     );
