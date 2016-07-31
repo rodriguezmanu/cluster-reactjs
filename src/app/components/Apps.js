@@ -5,13 +5,17 @@ export class AppsItem extends Component {
       super();
       this.handleAdd = this.handleAdd.bind(this);
       this.handleDelete = this.handleDelete.bind(this);
+      this.checkAvailCluster = this.checkAvailCluster.bind(this);
     }
 
     render() {
       return (
         <div>
             <span>{this.props.app.title} - </span>
-            <button onClick={this.handleAdd} disabled={this.props.app.count !== 2 ? false : true}>
+            <button
+              onClick={this.handleAdd}
+              disabled={this.props.app.count !== 2 && this.checkAvailCluster()  ? false : true}
+            >
                 Add
             </button>
             ---
@@ -29,7 +33,18 @@ export class AppsItem extends Component {
 
     handleDelete() {
       //faltan comprobaciones y ngif para mostrar o no el boton en el html
-        this.props.actions.deleteApp(this.props.app.id);
+        this.props.actions.deleteApp(this.props.app.id, this.props.servers);
+    }
+
+    checkAvailCluster() {
+      const servers = this.props.servers;
+
+      for (let i = 0; i < servers.length; i++) {//ver de cambiar por un for mas pro
+        if (servers[i].used === false) {
+          return true;
+        }
+      }
+      return false;
     }
 }
 

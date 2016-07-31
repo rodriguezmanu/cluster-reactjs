@@ -41,22 +41,28 @@ const initialState = [
 export default function apps(state = initialState, action) {
   switch (action.type) {
     case ADD_APP:
-     for(let i = 0; i < action.servers.length; i++) {
+     for (let i = 0; i < action.servers.length; i++) {
         if (action.servers[i].used === false) {
-          console.log(action.servers[i]);
-          action.servers[i].used = action.id;
+          console.log(state[action.id]);
+          action.servers[i].used = state[action.id];
           break;
         }
      }
 
-      state.map(app =>
+      return state.map(app =>
         app.id === action.id ?
           Object.assign({}, app, {count: app.count + 1}) :
           app
       );
 
     case DELETE_APP:
-    return state.map(app =>
+      for (let i = 0; i < action.servers.length; i++) {
+         if (typeof action.servers[i].used === 'object' && action.servers[i].used.id === action.id) {
+           action.servers[i].used = false;
+           break;
+         }
+      }
+      return state.map(app =>
       app.id === action.id ?
         Object.assign({}, app, {count: app.count - 1}) :
         app

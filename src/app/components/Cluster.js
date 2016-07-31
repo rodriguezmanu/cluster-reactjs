@@ -8,12 +8,15 @@ export class Cluster extends Component {
     }
 
     render() {
-      console.log(this.props.servers);
+      // console.log('render');
+      // console.log(this.props.servers);
       return (
       <ul className="todo-list">
         {this.props.servers.map(server =>
           <li key={server.id}>
-           <h1>{server.used.id}</h1>
+           <h1>
+             {server.used.id} - <span>{server.used.short}</span>
+           </h1>
          </li>
         )}
       </ul>

@@ -55,7 +55,6 @@ class MainSection extends Component {
 
   render() {
     const {actions, servers, apps, actionsApps} = this.props;
-    console.log(servers);
     return (
       <section className="main">
         <Grid>
