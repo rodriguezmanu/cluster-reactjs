@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import MainSection from '../components/MainSection';
+import {MainSection} from '../components/MainSection';
 import * as ServerActions from '../actions/ServerActions';
 import * as AppsActions from '../actions/AppsActions';
 

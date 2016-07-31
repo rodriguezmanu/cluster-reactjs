@@ -9,16 +9,11 @@ export class Server extends Component {
 
     render() {
       return (
-        <div>
-            <span>Servers - </span>
-            <button onClick={this.handleAdd}>
-                Add
-            </button>
-            -----
-            <button onClick={this.handleDelete} disabled={this.props.servers.length !== 0 ? false : true}>
-                Destroy
-            </button>
-        </div>
+        <li>
+            <h2>Servers</h2>
+            <button onClick={this.handleAdd}>Add</button>
+            <button onClick={this.handleDelete} disabled={this.props.servers.length !== 0 ? false : true}>Destroy</button>
+        </li>
       );
     }
 

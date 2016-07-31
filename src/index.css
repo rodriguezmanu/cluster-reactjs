@@ -1,3 +1,38 @@
 button:disabled {
     color: red;
 }
+
+html,
+body {
+  height: 100%;
+  font-family: 'Droid Sans Mono', sans-serif;
+}
+
+body {
+  background: #1E1E1E;
+  color: #f9f9f9;
+}
+
+a {
+  color:#bcbcbc;
+}
+
+#sidebar {
+  padding: 0;
+}
+
+#sidebar .nav {
+  width: 95%;
+  background-color: #2b2a2a;
+}
+#sidebar li {
+  border:0 #1e1e1e solid;
+  border-bottom-width:1px;
+}
+#sidebar li a {
+  padding-left:1px;
+}
+#sidebar li a:hover {
+  background-color:#222222;
+  color:#ffffff;
+}

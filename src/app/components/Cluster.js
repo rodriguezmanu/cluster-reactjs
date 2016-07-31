@@ -8,18 +8,30 @@ export class Cluster extends Component {
     }
 
     render() {
-      //need to check if is used server or not
-        let element =
-        <ul className="todo-list">
-          {this.props.servers.map(server =>
-            <li key={server.id}>
+      let html = [];
+      const servers = this.props.servers,
+        n = servers.length;
+
+      for (let i = 0; i < n; i++) {
+        if (servers[i].used !== false) {
+          let htmlServers =
+            <li key={servers[i].id}>
               <h1>
-                <span>{server.used.short}</span> - <span>{server.used.date}</span>
-               </h1>
-           </li>
-          )}
-        </ul>;
-        return element;
+                <span>{servers[i].used.short}</span> - <span>{servers[i].used.date}</span>
+              </h1>
+            </li>;
+            html.push(htmlServers);
+        } else {
+          let htmlEmpty =
+            <li key={servers[i].id}>
+              <h1>
+                <span>empty</span>
+              </h1>
+            </li>;
+            html.push(htmlEmpty);
+        }
+      }
+      return <ul className="list">{html}</ul>
     }
 
     handleAdd() {

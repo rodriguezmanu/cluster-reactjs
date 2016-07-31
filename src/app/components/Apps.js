@@ -10,19 +10,18 @@ export class AppsItem extends Component {
 
     render() {
       return (
-        <div>
-            <span>{this.props.app.title} - </span>
+        <li>
+            <h4>{this.props.app.title}</h4>
             <button
               onClick={this.handleAdd}
               disabled={this.props.app.count !== 2 && this.checkAvailCluster()  ? false : true}
             >
-                Add
+              Add
             </button>
-            ---
             <button onClick={this.handleDelete} disabled={this.props.app.count !== 0 ? false : true}>
                 Destroy
             </button>
-        </div>
+        </li>
       );
     }
 
