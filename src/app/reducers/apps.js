@@ -43,7 +43,6 @@ export default function apps(state = initialState, action) {
     case ADD_APP:
      for (let i = 0; i < action.servers.length; i++) {
         if (action.servers[i].used === false) {
-          console.log(state[action.id]);
           action.servers[i].used = state[action.id];
           break;
         }
