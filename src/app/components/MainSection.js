@@ -63,6 +63,7 @@ class MainSection extends Component {
               <Server
                 servers={servers}
                 actions={actions}
+                actionsApps={actionsApps}
               />
               <ul className="todo-list">
                 {this.props.apps.map(app =>

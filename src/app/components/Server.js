@@ -27,10 +27,17 @@ export class Server extends Component {
     }
 
     handleDelete() {
-      this.props.actions.deleteServer();
+      let copy = Object.assign([], this.props.servers),
+        firstServer = copy.shift();//ver si cual borrar
+
+      if (firstServer.used !== false) {
+        this.props.actionsApps.deleteApp(firstServer.used.id, this.props.servers);
+      }
+      this.props.actions.deleteServer(this.props.actionsApps);
     }
 }
 
+//check
 Server.propTypes = {
   actions: PropTypes.object.isRequired,
   servers: PropTypes.array.isRequired,

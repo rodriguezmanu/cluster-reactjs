@@ -1,4 +1,5 @@
 import {ADD_APP, DELETE_APP} from '../constants/ActionTypes';
+import moment from 'moment';
 
 const initialState = [
   {
@@ -43,6 +44,7 @@ export default function apps(state = initialState, action) {
     case ADD_APP:
      for (let i = 0; i < action.servers.length; i++) {
         if (action.servers[i].used === false) {
+          state[action.id].date = moment().fromNow();
           action.servers[i].used = state[action.id];
           break;
         }
