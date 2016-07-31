@@ -4,10 +4,12 @@ import {connect} from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/index';
+import * as ServerActions from '../actions/ServerActions';
 
 class App extends Component {
   render() {
-    const {todos, actions} = this.props;
+    const {todos, actions, servers, actionsServers} = this.props;
+    console.log(servers);
     return (
       <div>
         <Header
@@ -15,7 +17,8 @@ class App extends Component {
           />
         <MainSection
           todos={todos}
-          actions={actions}
+          servers={servers}
+          actions={actionsServers}
           />
       </div>
     );
@@ -24,18 +27,22 @@ class App extends Component {
 
 App.propTypes = {
   todos: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  servers: PropTypes.array.isRequired,
+  actionsServers: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    todos: state.todos,
+    servers: state.servers
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators(TodoActions, dispatch),
+    actionsServers: bindActionCreators(ServerActions, dispatch)
   };
 }
 
