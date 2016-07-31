@@ -15,7 +15,7 @@ export class Server extends Component {
                 Add
             </button>
             -----
-            <button onClick={this.handleDelete}>
+            <button onClick={this.handleDelete} disabled={this.props.servers.length !== 0 ? false : true}>
                 Destroy
             </button>
         </div>
@@ -23,12 +23,10 @@ export class Server extends Component {
     }
 
     handleAdd() {
-      //faltan comprobaciones y ngif para mostrar o no el boton html
       this.props.actions.addServer();
     }
 
     handleDelete() {
-      //faltan comprobaciones y ngif para mostrar o no el boton html
       this.props.actions.deleteServer();
     }
 }

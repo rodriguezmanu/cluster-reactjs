@@ -41,6 +41,14 @@ const initialState = [
 export default function apps(state = initialState, action) {
   switch (action.type) {
     case ADD_APP:
+     for(let i = 0; i < action.servers.length; i++) {
+        if (action.servers[i].used === false) {
+          console.log(action.servers[i]);
+          action.servers[i].used = action.id;
+          break;
+        }
+     }
+
       return state.map(app =>
         app.id === action.id ?
           Object.assign({}, app, {count: app.count + 1}) :

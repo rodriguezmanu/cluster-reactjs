@@ -1,7 +1,7 @@
 import * as types from '../constants/ActionTypes';
 
-export function addApp(id) {
-  return {type: types.ADD_APP, id};
+export function addApp(id, servers) {
+  return {type: types.ADD_APP, id, servers};
 }
 
 export function deleteApp(id) {

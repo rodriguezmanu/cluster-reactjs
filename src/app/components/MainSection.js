@@ -90,7 +90,10 @@ class MainSection extends Component {
         {this.renderFooter(completedCount)}
       </section>
       <section className="main">
-        <Server servers={servers} actions={actions}/>
+        <Server
+          servers={servers}
+          actions={actions}
+        />
       </section>
       <section className="main">
         <ul className="todo-list">
@@ -99,7 +102,8 @@ class MainSection extends Component {
               key={app.id}
               app={app}
               actions={actionsApps}
-              />
+              servers={servers}
+             />
           )}
         </ul>
       </section>
