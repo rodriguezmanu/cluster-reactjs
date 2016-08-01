@@ -2,11 +2,11 @@ import React, {Component, PropTypes} from 'react';
 import {Server} from './Server';
 import {AppsItem} from './Apps';
 import {Cluster} from './Cluster';
-import { Button, Grid, Row, Col, Clearfix } from 'react-bootstrap';
+import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
 
 export class MainSection extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor() {
+    super();
   }
 
   render() {
@@ -43,7 +43,7 @@ export class MainSection extends Component {
     );
   }
 }
-//add here
+// check here
 MainSection.propTypes = {
   actions: PropTypes.object.isRequired
 };

@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Button, Glyphicon, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
 
 export class AppsItem extends Component {
     constructor() {
@@ -11,16 +12,20 @@ export class AppsItem extends Component {
     render() {
       return (
         <li>
-            <h4>{this.props.app.title}</h4>
-            <button
-              onClick={this.handleAdd}
-              disabled={this.props.app.count !== 2 && this.checkAvailCluster()  ? false : true}
-            >
-              Add
-            </button>
-            <button onClick={this.handleDelete} disabled={this.props.app.count !== 0 ? false : true}>
-                Destroy
-            </button>
+          <h4>{this.props.app.title}</h4>
+          <ButtonToolbar>
+            <ButtonGroup>
+              <Button
+                onClick={this.handleAdd}
+                disabled={this.props.app.count !== 2 && this.checkAvailCluster()  ? false : true}
+              >
+                <Glyphicon glyph="glyphicon glyphicon-plus" />
+              </Button>
+                <Button onClick={this.handleDelete} disabled={this.props.app.count !== 0 ? false : true}>
+                  <Glyphicon glyph="glyphicon glyphicon-minus" />
+                </Button>
+            </ButtonGroup>
+          </ButtonToolbar>
         </li>
       );
     }
@@ -46,8 +51,8 @@ export class AppsItem extends Component {
       return false;
     }
 }
-
-// AppsItem.propTypes = {
-//   actions: PropTypes.object.isRequired,
-//   servers: PropTypes.array.isRequired,
-// };
+//check
+AppsItem.propTypes = {
+  actions: PropTypes.object.isRequired,
+  servers: PropTypes.array.isRequired,
+};

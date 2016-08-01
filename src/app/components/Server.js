@@ -1,18 +1,28 @@
 import React, {Component, PropTypes} from 'react';
+import {Button, Glyphicon, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
+
 
 export class Server extends Component {
     constructor() {
-        super();
-        this.handleAdd = this.handleAdd.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+      super();
+      this.handleAdd = this.handleAdd.bind(this);
+      this.handleDelete = this.handleDelete.bind(this);
     }
 
     render() {
       return (
         <li>
             <h2>Servers</h2>
-            <button onClick={this.handleAdd}>Add</button>
-            <button onClick={this.handleDelete} disabled={this.props.servers.length !== 0 ? false : true}>Destroy</button>
+            <ButtonToolbar>
+              <ButtonGroup>
+                <Button onClick={this.handleAdd}>
+                  <Glyphicon glyph="glyphicon glyphicon-plus" />
+                </Button>
+                <Button onClick={this.handleDelete} disabled={this.props.servers.length !== 0 ? false : true}>
+                  <Glyphicon glyph="glyphicon glyphicon-minus" />
+                </Button>
+              </ButtonGroup>
+            </ButtonToolbar>
         </li>
       );
     }
@@ -32,7 +42,7 @@ export class Server extends Component {
     }
 }
 
-//check
+//check here
 Server.propTypes = {
   actions: PropTypes.object.isRequired,
   servers: PropTypes.array.isRequired,
