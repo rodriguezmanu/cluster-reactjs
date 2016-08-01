@@ -14,14 +14,14 @@ export class MainSection extends Component {
     return (
         <Grid fluid={true}>
           <Row className="show-grid">
-            <Col xs={6} md={4} id="sidebar">
+            <Col xs={6} md={2} id="sidebar">
+              <h2>Servers</h2>
               <ul className="nav" id="sidebar-nav">
                 <Server
                   servers={servers}
                   actions={actions}
                   actionsApps={actionsApps}
                 />
-                <hr/>
                 <h2>Apps</h2>
                 {this.props.apps.map(app =>
                   <AppsItem
@@ -33,10 +33,10 @@ export class MainSection extends Component {
                 )}
               </ul>
             </Col>
-            <Col xs={12} md={8}>
-            <Cluster
-              servers={servers}
-            />
+            <Col xs={12} md={10} className="cluster">
+              <Cluster
+                servers={servers}
+              />
             </Col>
           </Row>
         </Grid>

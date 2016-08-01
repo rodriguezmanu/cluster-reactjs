@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Button, Glyphicon, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
-
+import {Button, Glyphicon, ButtonToolbar, ButtonGroup, Row, Col, Clearfix} from 'react-bootstrap';
 
 export class Server extends Component {
     constructor() {
@@ -12,7 +11,11 @@ export class Server extends Component {
     render() {
       return (
         <li>
-            <h2>Servers</h2>
+        <Row className="show-grid">
+          <Col xs={4} md={4}>
+            <h4>Cluster</h4>
+          </Col>
+          <Col xs={8} md={8}>
             <ButtonToolbar>
               <ButtonGroup>
                 <Button onClick={this.handleAdd}>
@@ -23,6 +26,8 @@ export class Server extends Component {
                 </Button>
               </ButtonGroup>
             </ButtonToolbar>
+          </Col>
+          </Row>
         </li>
       );
     }

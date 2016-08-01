@@ -1,16 +1,16 @@
 button:disabled {
-    color: red;
+  color: red;
 }
 
 html,
 body {
   height: 100%;
-  font-family: 'Droid Sans Mono', sans-serif;
+  font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
 body {
   background: #1E1E1E;
-  color: #f9f9f9;
+  color: #C4C4C4;
 }
 
 a {
@@ -23,16 +23,59 @@ a {
 
 #sidebar .nav {
   width: 95%;
-  background-color: #2b2a2a;
 }
+
 #sidebar li {
   border:0 #1e1e1e solid;
   border-bottom-width:1px;
+  padding: 10px;
 }
+
 #sidebar li a {
   padding-left:1px;
 }
-#sidebar li a:hover {
-  background-color:#222222;
-  color:#ffffff;
+
+.thumbnail {
+  background-color: #505050;
+  border: none;
+  height: 170px;
+  color: white;
+}
+
+.btn-toolbar {
+  float: right;
+}
+
+h1 {
+  padding: 20px 15px;
+}
+
+.Hadoop.thumbnail {
+  background: #4776E6;
+  background: -webkit-linear-gradient(right, #4776E6, #8E54E9);
+  background: linear-gradient(to left, #4776E6, #8E54E9);
+}
+
+.Rails.thumbnail {
+  background: #085078;
+  background: -webkit-linear-gradient(right, #085078, #85D8CE);
+  background: linear-gradient(to left, #085078, #85D8CE);
+}
+
+.Chronos.thumbnail {
+  background: #3D7EAA;
+  background: -webkit-linear-gradient(to left, #3D7EAA , #FFE47A);
+  background: linear-gradient(to left, #3D7EAA , #FFE47A);
+}
+
+.Storm.thumbnail {
+  background: #DC2424;
+  background: -webkit-linear-gradient(to left, #DC2424 , #4A569D);
+  background: linear-gradient(to left, #DC2424 , #4A569D);
+}
+
+.spark.thumbnail {
+  background: #ED4264;
+  background: -webkit-linear-gradient(to left, #ED4264 , #FFEDBC);
+  background: linear-gradient(to left, #ED4264 , #FFEDBC);
 }

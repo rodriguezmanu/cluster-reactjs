@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Button, Glyphicon, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
+import {Button, Glyphicon, ButtonToolbar, ButtonGroup, Row, Col, Clearfix} from 'react-bootstrap';
 
 export class AppsItem extends Component {
     constructor() {
@@ -12,20 +12,26 @@ export class AppsItem extends Component {
     render() {
       return (
         <li>
-          <h4>{this.props.app.title}</h4>
-          <ButtonToolbar>
-            <ButtonGroup>
-              <Button
-                onClick={this.handleAdd}
-                disabled={this.props.app.count !== 2 && this.checkAvailCluster()  ? false : true}
-              >
-                <Glyphicon glyph="glyphicon glyphicon-plus" />
-              </Button>
-                <Button onClick={this.handleDelete} disabled={this.props.app.count !== 0 ? false : true}>
-                  <Glyphicon glyph="glyphicon glyphicon-minus" />
-                </Button>
-            </ButtonGroup>
-          </ButtonToolbar>
+          <Row className="show-grid">
+            <Col xs={4} md={4}>
+              <h4>{this.props.app.title}</h4>
+            </Col>
+            <Col xs={8} md={8}>
+              <ButtonToolbar>
+                <ButtonGroup>
+                  <Button
+                    onClick={this.handleAdd}
+                    disabled={this.props.app.count !== 2 && this.checkAvailCluster()  ? false : true}
+                  >
+                    <Glyphicon glyph="glyphicon glyphicon-plus" />
+                  </Button>
+                    <Button onClick={this.handleDelete} disabled={this.props.app.count !== 0 ? false : true}>
+                      <Glyphicon glyph="glyphicon glyphicon-minus" />
+                    </Button>
+                </ButtonGroup>
+              </ButtonToolbar>
+            </Col>
+          </Row>
         </li>
       );
     }
