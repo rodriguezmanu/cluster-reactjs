@@ -47,8 +47,8 @@ export class Server extends Component {
     }
 }
 
-//check here
 Server.propTypes = {
   actions: PropTypes.object.isRequired,
   servers: PropTypes.array.isRequired,
+  actionsApps: PropTypes.object.isRequired
 };

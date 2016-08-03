@@ -43,7 +43,10 @@ export class MainSection extends Component {
     );
   }
 }
-// check here
+
 MainSection.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  actionsApps: PropTypes.object.isRequired,
+  servers: PropTypes.array.isRequired,
+  apps: PropTypes.array.isRequired
 };

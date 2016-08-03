@@ -79,3 +79,30 @@ h1 {
   background: -webkit-linear-gradient(to left, #ED4264 , #FFEDBC);
   background: linear-gradient(to left, #ED4264 , #FFEDBC);
 }
+
+.animated-server-enter {
+  opacity: 0.1;
+  transition: opacity .9s ease-in;
+}
+
+.animated-server-enter.animated-server-enter-active {
+  opacity: 1;
+}
+
+.animated-server-leave {
+  opacity: 1;
+  transition: opacity .9s ease-in;
+}
+
+.animated-server-leave.animated-server-leave-active {
+  opacity: 0.1;
+}
+
+.animated-server-appear {
+  opacity: 0.1;
+  transition: opacity .9s ease-in;
+}
+
+.animated-server-appear.animated-server-appear-active {
+  opacity: 1;
+}

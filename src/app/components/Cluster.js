@@ -1,11 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {Row, Col, Clearfix} from 'react-bootstrap';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export class Cluster extends Component {
     constructor() {
-        super();
-        this.handleAdd = this.handleAdd.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+      super();
     }
 
     render() {
@@ -16,21 +15,24 @@ export class Cluster extends Component {
       for (let i = 0; i < n; i++) {
         if (servers[i].used !== false) {
           let htmlServers =
-          <Col xs={3} md={3} lg={3} key={servers[i].id}  className="text-center">
-            <div className={servers[i].used.title + ' thumbnail'}>
-              <h2>{servers[i].used.short}</h2>
-              <h4>{servers[i].used.title}</h4>
-              <p>{servers[i].used.date}</p>
-            </div>
-          </Col>;
-            html.push(htmlServers);
+            <Col xs={3} md={3} lg={3} key={servers[i].id}  className="text-center">
+              <ReactCSSTransitionGroup transitionName="animated-server" transitionAppear={true}
+                transitionEnterTimeout={3000} transitionLeaveTimeout={3000}>
+                <div className={servers[i].used.title + ' thumbnail'}>
+                  <h2>{servers[i].used.short}</h2>
+                  <h4>{servers[i].used.title}</h4>
+                  <p>{servers[i].used.date}</p>
+                </div>
+              </ReactCSSTransitionGroup>
+            </Col>;
+          html.push(htmlServers);
         } else {
           let htmlEmpty =
-          <Col xs={3} md={3} lg={3} key={servers[i].id}>
-            <div className="thumbnail">
-            </div>
-          </Col>;
-            html.push(htmlEmpty);
+            <Col xs={3} md={3} lg={3} key={servers[i].id}>
+                <div className="thumbnail">
+                </div>
+            </Col>;
+          html.push(htmlEmpty);
         }
       }
       return (
@@ -40,17 +42,8 @@ export class Cluster extends Component {
         </Row>
       );
     }
-
-    handleAdd() {
-      this.props.actions.addServer();
-    }
-
-    handleDelete() {
-      this.props.actions.deleteServer();
-    }
 }
-//check here
-// Cluster.propTypes = {
-//   actions: PropTypes.object.isRequired,
-//   servers: PropTypes.array.isRequired,
-// };
+
+Cluster.propTypes = {
+  servers: PropTypes.array.isRequired,
+};
