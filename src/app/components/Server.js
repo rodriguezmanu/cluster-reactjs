@@ -1,16 +1,17 @@
 import React, {Component, PropTypes} from 'react';
-import {Button, Glyphicon, ButtonToolbar, ButtonGroup, Row, Col, Clearfix} from 'react-bootstrap';
+import {Button, Glyphicon, ButtonToolbar, ButtonGroup, Row, Col} from 'react-bootstrap';
+import * as utilities from '../util/util';
 
 export class Server extends Component {
-    constructor() {
-      super();
-      this.handleAdd = this.handleAdd.bind(this);
-      this.handleDelete = this.handleDelete.bind(this);
-    }
+  constructor() {
+    super();
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
 
-    render() {
-      return (
-        <li>
+  render() {
+    return (
+      <li>
         <Row className="show-grid">
           <Col xs={4} md={4}>
             <h4>Cluster</h4>
@@ -19,47 +20,37 @@ export class Server extends Component {
             <ButtonToolbar>
               <ButtonGroup>
                 <Button onClick={this.handleAdd}>
-                  <Glyphicon glyph="glyphicon glyphicon-plus" />
+                  <Glyphicon glyph="glyphicon glyphicon-plus"/>
                 </Button>
-                <Button onClick={this.handleDelete} disabled={this.props.servers.length !== 0 ? false : true}>
-                  <Glyphicon glyph="glyphicon glyphicon-minus" />
+                <Button onClick={this.handleDelete} disabled={(this.props.servers.length !== 0) ? false : true}>
+                  <Glyphicon glyph="glyphicon glyphicon-minus"/>
                 </Button>
               </ButtonGroup>
             </ButtonToolbar>
           </Col>
-          </Row>
-        </li>
-      );
-    }
+        </Row>
+      </li>
+    );
+  }
 
-    handleAdd() {
-      this.props.actions.addServer();
-    }
+  handleAdd() {
+    this.props.actions.addServer();
+  }
 
-    handleDelete() {
-      let copy = Object.assign([], this.props.servers),
-        firstServer = copy.shift(),
-        id = firstServer.used.id;
+  handleDelete() {
+    const copy = Object.assign([], this.props.servers);
+    const firstServer = copy.shift();
+    const id = firstServer.used.id;
 
-      this.props.actions.deleteServer(this.props.actionsApps);
+    this.props.actions.deleteServer(this.props.actionsApps);
 
-      if (firstServer.used !== false) {
-        this.props.actionsApps.deleteApp(firstServer.used.id, this.props.servers);
-        if  (this.checkAvailCluster()) {
-          this.props.actionsApps.addApp(id, this.props.servers);
-        }
+    if (firstServer.used !== false) {
+      this.props.actionsApps.deleteApp(firstServer.used.id, this.props.servers);
+      if (utilities.checkAvail(this.props.servers)) {
+        this.props.actionsApps.addApp(id, this.props.servers);
       }
     }
-
-    checkAvailCluster() {
-      const servers = this.props.servers;
-      for (let i = 0; i < servers.length; i++) {
-        if (servers[i].used === false) {
-          return true;
-        }
-      }
-      return false;
-    }
+  }
 }
 
 Server.propTypes = {
