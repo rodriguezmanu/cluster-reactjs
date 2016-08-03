@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {MainSection} from '../components/MainSection';
@@ -22,13 +22,6 @@ class App extends Component {
   }
 }
 
-// App.propTypes = {
-//   servers: PropTypes.array.isRequired,
-//   apps: PropTypes.array.isRequired,
-//   actionsServers: PropTypes.object.isRequired,
-//   actionsApps: PropTypes.object.isRequired
-// };
-
 function mapStateToProps(state) {
   return {
     servers: state.servers,
@@ -42,6 +35,13 @@ function mapDispatchToProps(dispatch) {
     actionsApps: bindActionCreators(AppsActions, dispatch)
   };
 }
+
+App.propTypes = {
+  servers: PropTypes.array.isRequired,
+  apps: PropTypes.array.isRequired,
+  actionsServers: PropTypes.object.isRequired,
+  actionsApps: PropTypes.object.isRequired
+};
 
 export default connect(
   mapStateToProps,

@@ -41,7 +41,7 @@ export class AppsItem extends Component {
     }
 
     handleDelete() {
-        this.props.actions.deleteApp(this.props.app.id, this.props.servers);
+      this.props.actions.deleteApp(this.props.app.id, this.props.servers);
     }
 
     checkAvailCluster() {
