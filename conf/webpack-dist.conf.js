@@ -42,9 +42,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {unused: true, dead_code: true} // eslint-disable-line camelcase
-    }),
     new SplitByPathPlugin([{
       name: 'vendor',
       path: path.join(__dirname, '../node_modules')
