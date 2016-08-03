@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import {Row, Col} from 'react-bootstrap';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export class Cluster extends Component {
   render() {
@@ -12,24 +11,17 @@ export class Cluster extends Component {
       if (servers[i].used !== false) {
         const htmlServers =
           <Col xs={3} md={3} lg={3} key={servers[i].id} className="text-center">
-            <ReactCSSTransitionGroup
-              transitionName="animated-server"
-              transitionAppear={true}
-              transitionEnterTimeout={3000}
-              transitionLeaveTimeout={3000}
-              >
-              <div className={servers[i].used.title + ' thumbnail'}>
-                <h2>{servers[i].used.short}</h2>
-                <h4>{servers[i].used.title}</h4>
-                <p>{servers[i].used.date}</p>
-              </div>
-            </ReactCSSTransitionGroup>
+            <div className={servers[i].used.title + ' thumbnail animated fadeIn'}>
+              <h2>{servers[i].used.short}</h2>
+              <h4>{servers[i].used.title}</h4>
+              <p>{servers[i].used.date}</p>
+            </div>
           </Col>;
         html.push(htmlServers);
       } else {
         const htmlEmpty =
           <Col xs={3} md={3} lg={3} key={servers[i].id}>
-            <div className="thumbnail">
+            <div className="thumbnail bounceInRight animated">
             </div>
           </Col>;
         html.push(htmlEmpty);
