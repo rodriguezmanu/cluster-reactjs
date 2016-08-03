@@ -38,12 +38,27 @@ export class Server extends Component {
 
     handleDelete() {
       let copy = Object.assign([], this.props.servers),
-        firstServer = copy.shift();//ver si cual borrar
+        firstServer = copy.shift(),
+        id = firstServer.used.id;
+
+      this.props.actions.deleteServer(this.props.actionsApps);
 
       if (firstServer.used !== false) {
         this.props.actionsApps.deleteApp(firstServer.used.id, this.props.servers);
+        if  (this.checkAvailCluster()) {
+          this.props.actionsApps.addApp(id, this.props.servers);
+        }
       }
-      this.props.actions.deleteServer(this.props.actionsApps);
+    }
+
+    checkAvailCluster() {
+      const servers = this.props.servers;
+      for (let i = 0; i < servers.length; i++) {
+        if (servers[i].used === false) {
+          return true;
+        }
+      }
+      return false;
     }
 }
 
