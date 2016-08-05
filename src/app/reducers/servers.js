@@ -1,25 +1,7 @@
-import {ADD_SERVER, DELETE_SERVER, COMPLETE_SERVER} from '../constants/ActionTypes';
+import {ADD_SERVER, DELETE_SERVER} from '../constants/ActionTypes';
+import {initialStateServer} from '../constants/InitialStates';
 
-const initialState = [
-  {
-    id: 0,
-    used: false
-  },
-  {
-    id: 1,
-    used: false
-  },
-  {
-    id: 2,
-    used: false
-  },
-  {
-    id: 3,
-    used: false
-  }
-];
-
-export default function servers(state = initialState, action) {
+export default function servers(state = initialStateServer, action) {
   switch (action.type) {
     case ADD_SERVER:
       return [
@@ -33,7 +15,6 @@ export default function servers(state = initialState, action) {
     case DELETE_SERVER:
       state.shift();
 
-    case COMPLETE_SERVER:
       return state.map(server =>
         server.id === action.id ?
           Object.assign({}, server, {used: !server.used}) :
