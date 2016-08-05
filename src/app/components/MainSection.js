@@ -11,7 +11,7 @@ export class MainSection extends Component {
     return (
       <Grid fluid={true}>
         <Row className="show-grid">
-          <Col xs={6} md={2} id="sidebar">
+          <Col xs={12} md={2} id="sidebar">
             <h2>Servers</h2>
             <ul className="nav" id="sidebar-nav">
               <Server

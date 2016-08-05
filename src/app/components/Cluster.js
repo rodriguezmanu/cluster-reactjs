@@ -10,7 +10,7 @@ export class Cluster extends Component {
     for (let i = 0; i < n; i++) {
       if (servers[i].used !== false) {
         const htmlServers =
-          <Col xs={3} md={3} lg={3} key={servers[i].id} className="text-center">
+          <Col xs={6} md={6} lg={3} key={servers[i].id} className="text-center">
             <div className={servers[i].used.title + ' thumbnail animated fadeIn'}>
               <h2>{servers[i].used.short}</h2>
               <h4>{servers[i].used.title}</h4>
@@ -20,7 +20,7 @@ export class Cluster extends Component {
         html.push(htmlServers);
       } else {
         const htmlEmpty =
-          <Col xs={3} md={3} lg={3} key={servers[i].id}>
+          <Col xs={6} md={6} lg={3} key={servers[i].id}>
             <div className="thumbnail bounceInRight animated">
             </div>
           </Col>;
