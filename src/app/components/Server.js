@@ -44,7 +44,7 @@ export class Server extends Component {
     if (typeof lastServer.used === 'object') {
       this.props.actionsApps.deleteApp(id, this.props.servers);
       this.props.actions.deleteServer();
-      if (!utilities.checkAvail(this.props.servers)) {
+      if (!utilities.checkAvailServers(this.props.servers)) {
         this.props.actionsApps.addApp(id, this.props.servers);
       }
     } else {

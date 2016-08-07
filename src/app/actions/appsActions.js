@@ -7,3 +7,7 @@ export function addApp(id, servers) {
 export function deleteApp(id, servers) {
   return {type: types.DELETE_APP, id, servers};
 }
+
+export function moveApp(id, servers) {
+  return {type: types.MOVE_APP, id, servers};
+}

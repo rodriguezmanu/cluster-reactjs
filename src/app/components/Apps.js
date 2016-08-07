@@ -10,7 +10,7 @@ export class AppsItem extends Component {
   }
 
   render() {
-    let isDisable = this.props.app.count === 2 || utilities.checkAvail(this.props.servers);
+    let isDisable = this.props.app.count === 2 || utilities.checkAvailServers(this.props.servers);
 
     return (
       <li>
@@ -40,6 +40,7 @@ export class AppsItem extends Component {
 
   handleAdd() {
     this.props.actions.addApp(this.props.app.id, this.props.servers);
+    this.props.actions.moveApp(this.props.app.id, this.props.servers);
   }
 
   handleDelete() {

@@ -8,7 +8,6 @@ import * as AppsActions from '../actions/appsActions';
 class App extends Component {
   render() {
     const {servers, actionsServers, apps, actionsApps} = this.props;
-    console.log(servers, apps);
     return (
       <div>
         <MainSection
