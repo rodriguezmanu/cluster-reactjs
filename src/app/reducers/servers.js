@@ -5,18 +5,18 @@ export default function servers(state = initialStateServer, action) {
   switch (action.type) {
     case ADD_SERVER:
       return [
+        ...state,
         {
           id: state.reduce((maxId, server) => Math.max(server.id, maxId), -1) + 1,
           used: false
         },
-        ...state
       ];
 
     case DELETE_SERVER:
-      state.shift();
+      var last = state.pop();
 
       return state.map(server =>
-        server.id === action.id ?
+        server.id === last.id ?
           Object.assign({}, server, {used: !server.used}) :
           server
       );

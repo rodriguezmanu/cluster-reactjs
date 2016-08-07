@@ -4,6 +4,6 @@ export function addServer() {
   return {type: types.ADD_SERVER};
 }
 
-export function deleteServer(actions) {
-  return {type: types.DELETE_SERVER, actions};
+export function deleteServer() {
+  return {type: types.DELETE_SERVER};
 }

@@ -38,18 +38,17 @@ export class Server extends Component {
   }
 
   handleDelete() {
-    const copy = Object.assign([], this.props.servers);
-    const firstServer = copy.shift();
-    const id = firstServer.used.id;
+    const lastServer = this.props.servers[this.props.servers.length - 1];
+    const id = lastServer.used.id;
 
-    if (typeof firstServer.used === 'object') {
-      this.props.actionsApps.deleteApp(firstServer.used.id, this.props.servers);
-      this.props.actions.deleteServer(this.props.actionsApps);
-      if (utilities.checkAvail(this.props.servers)) {
+    if (typeof lastServer.used === 'object') {
+      this.props.actionsApps.deleteApp(id, this.props.servers);
+      this.props.actions.deleteServer();
+      if (!utilities.checkAvail(this.props.servers)) {
         this.props.actionsApps.addApp(id, this.props.servers);
       }
     } else {
-      this.props.actions.deleteServer(this.props.actionsApps);
+      this.props.actions.deleteServer();
     }
   }
 }

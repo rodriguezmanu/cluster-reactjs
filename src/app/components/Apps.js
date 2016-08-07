@@ -10,7 +10,7 @@ export class AppsItem extends Component {
   }
 
   render() {
-    let isDisable = this.props.app.count === 2 && utilities.checkAvail(this.props.servers);
+    let isDisable = this.props.app.count === 2 || utilities.checkAvail(this.props.servers);
 
     return (
       <li>
