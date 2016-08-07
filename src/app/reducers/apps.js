@@ -20,7 +20,7 @@ export default function apps(state = initialStateApp, action) {
       );
 
     case DELETE_APP:
-      for (let i = action.servers.length - 1; i >= 0; i--) {
+      for (let i = 0; i < action.servers.length; i++) {
         if (typeof action.servers[i].used === 'object' && action.servers[i].used.id === action.id) {
           action.servers[i].used = false;
           break;

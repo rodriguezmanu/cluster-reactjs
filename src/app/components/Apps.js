@@ -10,6 +10,8 @@ export class AppsItem extends Component {
   }
 
   render() {
+    let isDisable = this.props.app.count === 2 && utilities.checkAvail(this.props.servers);
+
     return (
       <li>
         <Row className="show-grid">
@@ -21,11 +23,11 @@ export class AppsItem extends Component {
               <ButtonGroup>
                 <Button
                   onClick={this.handleAdd}
-                  disabled={(this.props.app.count !== 2 && utilities.checkAvail(this.props.servers)) ? false : true}
+                  disabled={isDisable}
                   >
                   <Glyphicon glyph="glyphicon glyphicon-plus"/>
                 </Button>
-                <Button onClick={this.handleDelete} disabled={(this.props.app.count !== 0) ? false : true}>
+                <Button onClick={this.handleDelete} disabled={this.props.app.count === 0}>
                   <Glyphicon glyph="glyphicon glyphicon-minus"/>
                 </Button>
               </ButtonGroup>

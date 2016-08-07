@@ -9,7 +9,7 @@ export class MainSection extends Component {
   render() {
     const {actions, servers, apps, actionsApps} = this.props;
     return (
-      <Grid fluid={true}>
+      <Grid fluid>
         <Row className="show-grid">
           <Col xs={12} md={2} id="sidebar">
             <h2>Servers</h2>

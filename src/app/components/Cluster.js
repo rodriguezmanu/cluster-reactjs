@@ -8,22 +8,25 @@ export class Cluster extends Component {
     const n = servers.length;
 
     for (let i = 0; i < n; i++) {
-      if (servers[i].used !== false) {
-        const htmlServers =
+      if (typeof servers[i].used === 'object') {
+        let classes = `${servers[i].used.title} thumbnail animated fadeIn`;
+        const htmlServers = (
           <Col xs={6} md={6} lg={3} key={servers[i].id} className="text-center">
-            <div className={servers[i].used.title + ' thumbnail animated fadeIn'}>
+            <div className={classes}>
               <h2>{servers[i].used.short}</h2>
               <h4>{servers[i].used.title}</h4>
               <p>{servers[i].used.date}</p>
             </div>
-          </Col>;
+          </Col>
+        );
         html.push(htmlServers);
       } else {
-        const htmlEmpty =
+        const htmlEmpty = (
           <Col xs={6} md={6} lg={3} key={servers[i].id}>
             <div className="thumbnail bounceInRight animated">
             </div>
-          </Col>;
+          </Col>
+        );
         html.push(htmlEmpty);
       }
     }

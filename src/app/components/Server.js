@@ -22,7 +22,7 @@ export class Server extends Component {
                 <Button onClick={this.handleAdd}>
                   <Glyphicon glyph="glyphicon glyphicon-plus"/>
                 </Button>
-                <Button onClick={this.handleDelete} disabled={(this.props.servers.length !== 0) ? false : true}>
+                <Button onClick={this.handleDelete} disabled={this.props.servers.length === 0}>
                   <Glyphicon glyph="glyphicon glyphicon-minus"/>
                 </Button>
               </ButtonGroup>
@@ -42,13 +42,14 @@ export class Server extends Component {
     const firstServer = copy.shift();
     const id = firstServer.used.id;
 
-    this.props.actions.deleteServer(this.props.actionsApps);
-
-    if (firstServer.used !== false) {
+    if (typeof firstServer.used === 'object') {
       this.props.actionsApps.deleteApp(firstServer.used.id, this.props.servers);
+      this.props.actions.deleteServer(this.props.actionsApps);
       if (utilities.checkAvail(this.props.servers)) {
         this.props.actionsApps.addApp(id, this.props.servers);
       }
+    } else {
+      this.props.actions.deleteServer(this.props.actionsApps);
     }
   }
 }
