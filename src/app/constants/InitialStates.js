@@ -31,7 +31,7 @@ export const initialStateApp = [
     id: 4,
     used: false,
     count: 0,
-    title: 'spark',
+    title: 'Spark',
     short: 'Sp'
   }
 ];

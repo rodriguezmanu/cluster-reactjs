@@ -38,7 +38,7 @@ export default function apps(state = initialStateApp, action) {
 
     case MOVE_APP: {
       if (utilities.checkAvailApps(state)) {
-        utilities.move(action.servers, 4, 0);
+        utilities.move(action.servers, state.length - 1, 0);
       }
       return state;
     }

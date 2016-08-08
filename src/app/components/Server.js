@@ -19,7 +19,7 @@ export class Server extends Component {
           <Col xs={8} md={8}>
             <ButtonToolbar>
               <ButtonGroup>
-                <Button onClick={this.handleAdd}>
+                <Button onClick={this.handleAdd} disabled={this.props.servers.length === 10}>
                   <Glyphicon glyph="glyphicon glyphicon-plus"/>
                 </Button>
                 <Button onClick={this.handleDelete} disabled={this.props.servers.length === 0}>

@@ -9,7 +9,7 @@ export class Cluster extends Component {
 
     for (let i = 0; i < n; i++) {
       if (typeof servers[i].used === 'object') {
-        let classes = `${servers[i].used.title} thumbnail animated fadeIn`;
+        let classes = `${servers[i].used.title} thumbnail animated tada`;
         const htmlServers = (
           <Col xs={6} md={6} lg={3} key={servers[i].id} className="text-center">
             <div className={classes}>

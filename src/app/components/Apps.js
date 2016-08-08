@@ -13,10 +13,10 @@ export class AppsItem extends Component {
     let isDisable = this.props.app.count === 2 || utilities.checkAvailServers(this.props.servers);
 
     return (
-      <li>
+      <li className={this.props.app.title}>
         <Row className="show-grid">
           <Col xs={4} md={4}>
-            <h4>{this.props.app.title}</h4>
+            <h4 className="title-app">{this.props.app.title}</h4>
           </Col>
           <Col xs={8} md={8}>
             <ButtonToolbar>
@@ -45,6 +45,7 @@ export class AppsItem extends Component {
 
   handleDelete() {
     this.props.actions.deleteApp(this.props.app.id, this.props.servers);
+    this.props.actions.moveApp(this.props.app.id, this.props.servers);
   }
 }
 
